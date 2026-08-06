@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>चातुर्मासिक पुण्योपार्जक पर्वकाल सन २०२६ | डिजिटल पत्रिका</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@500;600;700;800&family=Mukta:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --maroon-950:#3a0a10;
+    --maroon-800:#6b1420;
+    --maroon-700:#801a28;
+    --maroon-600:#932232;
+    --gold-600:#af8620;
+    --gold-500:#c9a227;
+    --gold-300:#e8cd7a;
+    --gold-100:#f6e9c4;
+    --cream-50:#fdf8ec;
+    --cream-100:#fbf1de;
+    --cream-200:#f3e3c0;
+    --ink-900:#2b1810;
+    --ink-700:#4a2e20;
+    --vermillion:#b33f1e;
+    --shadow-soft: 0 10px 30px rgba(58,10,16,.12);
+    --radius-lg: 22px;
+    --radius-md: 14px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Mukta', sans-serif;
+    background:var(--cream-100);
+    color:var(--ink-900);
+    overflow:hidden;
+  }
+  body.opened{overflow:auto;}
+  h1,h2,h3,h4{font-family:'Noto Serif Devanagari', serif; margin:0; color:var(--maroon-800);}
+  p{margin:0;}
+  ::selection{background:var(--gold-300); color:var(--maroon-950);}
+
+  /* ---------- decorative repeating diamond band ---------- */
+  .toran-band{
+    height:14px;
+    width:100%;
+    background:
+      repeating-linear-gradient(135deg, var(--gold-500) 0 7px, var(--maroon-800) 7px 14px);
+    opacity:.9;
+  }
+
+  /* ============ WELCOME SCREEN ============ */
+  #welcome-screen{
+    position:fixed; inset:0; z-index:80;
+    display:flex; align-items:center; justify-content:center;
+    background:radial-gradient(ellipse at 50% 32%, #4c0f19 0%, var(--maroon-950) 68%);
+    overflow:hidden;
+  }
+
+  /* ambient mandala rings + floating petals */
+  .welcome-bg{position:absolute; inset:0; z-index:1; pointer-events:none;}
+  .mandala-ring{
+    position:absolute; top:50%; left:50%; width:900px; height:900px;
+    margin:-450px 0 0 -450px; opacity:.09;
+    animation:spin-slow 130s linear infinite;
+  }
+  .mandala-ring.r2{
+    width:640px; height:640px; margin:-320px 0 0 -320px;
+    opacity:.12; animation-duration:95s; animation-direction:reverse;
+  }
+  @keyframes spin-slow{to{transform:rotate(360deg);}}
+
+  .petal{
+    position:absolute; bottom:-40px; opacity:0;
+    width:9px; height:13px; border-radius:60% 0 60% 0;
+    background:linear-gradient(160deg, var(--gold-300), var(--gold-600));
+    animation:rise linear infinite;
+  }
+  @keyframes rise{
+    0%{ transform:translateY(0) translateX(0) rotate(0deg); opacity:0;}
+    8%{ opacity:.6;}
+    90%{ opacity:.4;}
+    100%{ transform:translateY(-640px) translateX(26px) rotate(300deg); opacity:0;}
+  }
+  .petal:nth-child(3){left:8%; animation-duration:14s; animation-delay:.2s;}
+  .petal:nth-child(4){left:18%; animation-duration:17s; animation-delay:2.4s; width:7px; height:10px;}
+  .petal:nth-child(5){left:29%; animation-duration:13s; animation-delay:5s;}
+  .petal:nth-child(6){left:41%; animation-duration:19s; animation-delay:1.2s; width:11px; height:15px;}
+  .petal:nth-child(7){left:54%; animation-duration:15s; animation-delay:4.4s;}
+  .petal:nth-child(8){left:64%; animation-duration:18s; animation-delay:7s; width:8px; height:11px;}
+  .petal:nth-child(9){left:74%; animation-duration:16s; animation-delay:3s;}
+  .petal:nth-child(10){left:83%; animation-duration:20s; animation-delay:6s; width:10px; height:14px;}
+  .petal:nth-child(11){left:92%; animation-duration:14s; animation-delay:8.4s;}
+  .petal:nth-child(12){left:48%; animation-duration:22s; animation-delay:10s; width:7px; height:9px;}
+
+  .corner-flourish{position:absolute; width:78px; height:78px; opacity:.5; z-index:4;}
+  .corner-flourish.tl{top:22px; left:22px;}
+  .corner-flourish.tr{top:22px; right:22px; transform:scaleX(-1);}
+  .corner-flourish.bl{bottom:22px; left:22px; transform:scaleY(-1);}
+  .corner-flourish.br{bottom:22px; right:22px; transform:scale(-1,-1);}
+
+  .door{
+    position:absolute; top:0; bottom:0; width:50%; z-index:3;
+    background:
+      repeating-linear-gradient(135deg, rgba(201,162,39,.05) 0 2px, transparent 2px 26px),
+      radial-gradient(circle at 50% 45%, rgba(232,205,122,.13), transparent 55%),
+      linear-gradient(160deg, var(--maroon-800), var(--maroon-950) 78%);
+    transition: transform 1.15s cubic-bezier(.76,0,.24,1);
+    box-shadow: inset 0 0 70px rgba(0,0,0,.4);
+  }
+  .door-left{left:0; border-right:3px solid var(--gold-500);}
+  .door-right{right:0; border-left:3px solid var(--gold-500);}
+  .door::before{
+    content:"";
+    position:absolute; inset:16px;
+    border:1.5px solid rgba(201,162,39,.4);
+    border-radius:6px;
+  }
+  .door::after{
+    content:"";
+    position:absolute; inset:34px;
+    border:1px solid rgba(201,162,39,.22);
+    border-radius:6px;
+  }
+  .door-handle{
+    position:absolute; top:50%; width:18px; height:18px;
+    transform:translateY(-50%); border-radius:50%;
+    background:radial-gradient(circle at 35% 35%, var(--gold-300), var(--gold-600) 70%);
+    box-shadow:0 0 14px rgba(232,205,122,.6);
+  }
+  .door-left .door-handle{right:26px;}
+  .door-right .door-handle{left:26px;}
+  .door-glow{
+    position:absolute; top:50%; width:64px; height:64px;
+    transform:translateY(-50%);
+    background:radial-gradient(circle, var(--gold-300) 0%, transparent 70%);
+    opacity:.5; filter:blur(2px);
+  }
+  .door-left .door-glow{right:-32px;}
+  .door-right .door-glow{left:-32px;}
+
+  body.opened .door-left{transform:translateX(-100%);}
+  body.opened .door-right{transform:translateX(100%);}
+
+  .hero-content{
+    position:relative; z-index:5;
+    text-align:center; color:var(--cream-50);
+    padding:0 24px; max-width:640px;
+    transition: opacity .55s ease, transform .55s ease;
+  }
+  body.opened .hero-content{opacity:0; transform:scale(.92); pointer-events:none;}
+
+  .emblem-wrap{
+    position:relative; width:104px; height:104px; margin:0 auto 26px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .emblem-ring{
+    position:absolute; inset:0; border-radius:50%;
+    border:1px dashed rgba(232,205,122,.45);
+    animation:spin-slow 42s linear infinite;
+  }
+  .emblem{
+    position:relative; width:68px; height:68px;
+    filter:drop-shadow(0 0 14px rgba(232,205,122,.55));
+    animation: flicker 3.2s ease-in-out infinite;
+  }
+  @keyframes flicker{
+    0%,100%{ opacity:1; transform:scale(1);}
+    50%{ opacity:.85; transform:scale(1.06);}
+  }
+
+  .reveal-up{opacity:0; transform:translateY(16px); animation:revealUp .75s ease forwards;}
+  @keyframes revealUp{to{opacity:1; transform:translateY(0);}}
+
+  .eyebrow{
+    font-size:.82rem; letter-spacing:.28em; color:var(--gold-300);
+    margin-bottom:14px; font-weight:600;
+    animation-delay:.15s;
+  }
+  .hero-title{
+    font-size:clamp(1.6rem, 5.4vw, 2.7rem);
+    line-height:1.35; font-weight:700; color:var(--cream-100);
+    text-shadow:0 2px 18px rgba(0,0,0,.35);
+    animation-delay:.32s;
+  }
+  .hero-sub{
+    margin-top:16px; font-size:clamp(1rem,3vw,1.2rem);
+    color:var(--gold-100); font-weight:500;
+    animation-delay:.5s;
+  }
+  .open-btn{
+    margin-top:40px;
+    position:relative;
+    font-family:'Mukta', sans-serif;
+    font-size:1.08rem; font-weight:700;
+    color:var(--maroon-950);
+    background:linear-gradient(135deg, var(--gold-300), var(--gold-600));
+    border:none; border-radius:999px;
+    padding:16px 48px;
+    cursor:pointer;
+    box-shadow:0 12px 30px rgba(201,162,39,.35);
+    letter-spacing:.03em;
+    transition: transform .25s ease, box-shadow .25s ease;
+    animation-delay:.68s;
+  }
+  .open-btn::before{
+    content:"";
+    position:absolute; inset:-6px; border-radius:999px;
+    border:1.5px solid rgba(232,205,122,.5);
+    animation:pulse-ring 2.4s ease-out infinite;
+  }
+  @keyframes pulse-ring{
+    0%{ transform:scale(.92); opacity:.8;}
+    80%{ transform:scale(1.18); opacity:0;}
+    100%{ opacity:0;}
+  }
+  .open-btn:hover{transform:translateY(-3px); box-shadow:0 16px 36px rgba(201,162,39,.5);}
+  .open-btn:focus-visible{outline:3px solid var(--cream-50); outline-offset:4px;}
+
+  /* ============ MAIN CONTENT ============ */
+  #main-content{
+    opacity:0; transform:translateY(24px);
+    transition:opacity .8s ease .1s, transform .8s ease .1s;
+  }
+  #main-content.show{opacity:1; transform:translateY(0);}
+
+  .site-header{
+    position:sticky; top:0; z-index:40;
+    background:linear-gradient(180deg, var(--maroon-800), var(--maroon-700));
+    color:var(--cream-100);
+    padding:16px 20px 0;
+    box-shadow:var(--shadow-soft);
+  }
+  
+  /* UPDATED HEADER LAYOUT FOR MOBILE ICONS & ONE LINE TITLE */
+  .header-top{
+    max-width:1080px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    gap:12px; padding-bottom:12px;
+  }
+  .header-name{
+    display:flex; align-items:center; gap:10px; flex: 1; min-width: 0;
+  }
+  .header-name img {
+    flex-shrink: 0;
+    border-radius: 50%;
+  }
+  .header-name > div { flex: 1; min-width: 0; }
+  
+  .header-name .t1{font-size: clamp(0.7rem, 3.5vw, 1.02rem); font-weight:700; color:var(--gold-200,var(--gold-100)); line-height: 1.2; white-space: nowrap;}
+  .header-name .t2{font-size: clamp(0.6rem, 2.8vw, 0.78rem); color:var(--cream-200); font-family:'Mukta'; margin-top: 2px; white-space: nowrap;}
+  
+  /* Header Actions & Icons */
+  .header-actions { display:flex; align-items:center; gap: 10px; flex-shrink: 0; }
+  .icon-btn {
+    background: var(--gold-500); color: var(--maroon-950);
+    border: none; border-radius: 50%; width: 36px; height: 36px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; font-size: 1.2rem; font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+  .icon-btn:hover { transform: translateY(-2px); background: var(--gold-300); }
+  .icon-btn svg { width: 18px; height: 18px; fill: currentColor; }
+
+  /* Modals */
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 100;
+    background: rgba(43, 24, 16, 0.75); backdrop-filter: blur(4px);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+  }
+  .modal-overlay.active { opacity: 1; pointer-events: auto; }
+  .modal-content {
+    background: var(--cream-50); color: var(--ink-900);
+    border: 2px solid var(--gold-500); border-radius: var(--radius-lg);
+    padding: 30px 24px; max-width: 500px; width: 90%;
+    position: relative; transform: translateY(20px); transition: transform 0.3s ease;
+    box-shadow: var(--shadow-soft); max-height: 85vh; overflow-y: auto;
+  }
+  .modal-overlay.active .modal-content { transform: translateY(0); }
+  .close-modal {
+    position: absolute; top: 12px; right: 16px;
+    background: transparent; border: none; font-size: 1.5rem;
+    color: var(--maroon-800); cursor: pointer; padding: 4px; line-height: 1;
+  }
+  .modal-content h3 { font-size: 1.3rem; margin-bottom: 12px; text-align: center; }
+  .modal-content p { font-size: 0.95rem; line-height: 1.7; color: var(--ink-700); text-align: justify; }
+
+  .month-nav{
+    max-width:1080px; margin:0 auto;
+    display:flex; gap:8px; overflow-x:auto; padding:0 0 12px;
+    scrollbar-width:thin;
+  }
+  .month-nav::-webkit-scrollbar{height:5px;}
+  .month-nav::-webkit-scrollbar-thumb{background:var(--gold-500); border-radius:8px;}
+  .nav-pill{
+    flex:0 0 auto;
+    font-family:'Mukta'; font-weight:600; font-size:.88rem;
+    color:var(--cream-100);
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(232,205,122,.35);
+    border-radius:999px; padding:7px 16px;
+    cursor:pointer; white-space:nowrap;
+    transition:.2s ease;
+  }
+  .nav-pill:hover{background:rgba(255,255,255,.16);}
+  .nav-pill.active{background:var(--gold-500); color:var(--maroon-950); border-color:var(--gold-500);}
+
+  main{max-width:1080px; margin:0 auto; padding:0 20px 60px;}
+
+  .intro-banner{
+    text-align:center; padding:44px 12px 30px;
+  }
+  .intro-mantra{color:var(--maroon-600); font-weight:600; letter-spacing:.05em; font-size:.95rem; margin-bottom:10px;}
+  .intro-img { max-width: 100%; height: auto; border-radius: 8px; margin: 15px auto; display: block; }
+  
+  .intro-title{font-size:clamp(1.5rem,4vw,2.15rem); color:var(--maroon-800);}
+  .intro-sub{margin-top:10px; color:var(--ink-700); font-size:1rem;}
+  .intro-divider{
+    width:120px; height:3px; margin:22px auto 0;
+    background:linear-gradient(90deg, transparent, var(--gold-500), transparent);
+  }
+
+  /* ---- month accordion ---- */
+  .month-section{
+    background:var(--cream-50);
+    border:1px solid var(--gold-300);
+    border-radius:var(--radius-lg);
+    margin:18px 0;
+    overflow:hidden;
+    box-shadow:var(--shadow-soft);
+    scroll-margin-top:150px;
+  }
+  .month-head{
+    width:100%; border:none; background:linear-gradient(120deg, var(--maroon-700), var(--maroon-800));
+    color:var(--cream-100); cursor:pointer;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 22px; font-family:'Noto Serif Devanagari';
+    text-align:right;
+  }
+  .month-head-left{display:flex; align-items:center; gap:12px;}
+  .month-num{
+    font-family:'Mukta'; font-size:.75rem; font-weight:700;
+    color:var(--maroon-900,var(--maroon-950));
+    background:var(--gold-300); border-radius:8px; padding:3px 9px;
+  }
+  .month-name{font-size:1.3rem; font-weight:700;}
+  .month-count{font-family:'Mukta'; font-size:.8rem; color:var(--gold-100); font-weight:500;}
+  .chevron{transition:transform .35s ease; flex-shrink:0;}
+  .month-section.open .chevron{transform:rotate(180deg);}
+
+  .month-body-wrap{
+    display:grid; grid-template-rows:0fr;
+    transition:grid-template-rows .45s ease;
+  }
+  .month-section.open .month-body-wrap{grid-template-rows:1fr;}
+  .month-body-inner{overflow:hidden;}
+  .timeline{padding:22px 22px 8px; list-style:none; margin:0;}
+  .timeline li{
+    position:relative; padding:0 0 24px 30px; border-left:2px solid var(--gold-300);
+  }
+  .timeline li:last-child{border-left-color:transparent; padding-bottom:4px;}
+  .timeline li::before{
+    content:""; position:absolute; left:-7px; top:3px;
+    width:12px; height:12px; border-radius:50%;
+    background:var(--gold-500); border:2px solid var(--cream-50);
+    box-shadow:0 0 0 2px var(--gold-500);
+  }
+  .ev-date{
+    display:inline-block; font-weight:700; color:var(--maroon-800);
+    font-size:.95rem; margin-bottom:4px;
+  }
+  .ev-date .day{color:var(--vermillion);}
+  .ev-desc{color:var(--ink-700); font-size:.96rem; line-height:1.6;}
+
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ---- section titles ---- */
+  .block-title{
+    text-align:center; margin:52px 0 22px;
+  }
+  .block-title h2{font-size:clamp(1.3rem,3.6vw,1.7rem);}
+  .block-title .sub{color:var(--ink-700); font-size:.9rem; margin-top:6px;}
+
+  /* ---- special grid (tithi cards) ---- */
+  .card-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:18px;}
+  @media (max-width:820px){.card-grid{grid-template-columns:1fr;}}
+  .tcard{
+    background:var(--cream-50); border:1px solid var(--gold-300);
+    border-radius:var(--radius-lg); padding:22px; box-shadow:var(--shadow-soft);
+  }
+  .tcard h3{font-size:1.15rem; display:flex; align-items:center; gap:8px;}
+  .tcard .tcard-sub{font-size:.82rem; color:var(--ink-700); margin:6px 0 16px;}
+  .chip-wrap{display:flex; flex-wrap:wrap; gap:8px;}
+  .chip{
+    background:var(--cream-200); border:1px solid var(--gold-300); color:var(--ink-900);
+    font-size:.82rem; font-weight:600; padding:6px 12px; border-radius:999px;
+  }
+  .tyag-list{list-style:none; margin:0; padding:0;}
+  .tyag-list li{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:9px 0; border-bottom:1px dashed var(--gold-300); font-size:.92rem;
+  }
+  .tyag-list li:last-child{border-bottom:none;}
+  .tyag-day{font-weight:700; color:var(--maroon-800);}
+  .tyag-item{color:var(--ink-700);}
+
+  /* ---- mantra grid ---- */
+  .mantra-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+  @media (max-width:760px){.mantra-grid{grid-template-columns:1fr;}}
+  .mcard{
+    background:linear-gradient(165deg, var(--maroon-800), var(--maroon-950));
+    color:var(--cream-100); border-radius:var(--radius-lg); padding:26px;
+    box-shadow:var(--shadow-soft); position:relative; overflow:hidden;
+  }
+  .mcard::before{
+    content:"ॐ"; position:absolute; right:-6px; bottom:-28px; font-size:8rem;
+    color:rgba(232,205,122,.08); font-family:'Noto Serif Devanagari';
+  }
+  .mcard h3{color:var(--gold-100); font-size:1.15rem; margin-bottom:14px; position:relative;}
+  .mantra-list{list-style:none; margin:0; padding:0; position:relative;}
+  .mantra-list li{
+    padding:7px 0 7px 30px; font-size:.95rem; position:relative; line-height:1.5;
+  }
+  .mantra-list li span.num{
+    position:absolute; left:0; top:7px; color:var(--gold-300); font-weight:700; font-size:.85rem;
+  }
+
+  /* ---- notices ---- */
+  .notice-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+  @media (max-width:820px){.notice-grid{grid-template-columns:1fr;}}
+  .ncard{
+    background:var(--cream-50); border:1.5px solid var(--vermillion); border-radius:var(--radius-lg);
+    padding:22px;
+  }
+  .ncard h3{color:var(--vermillion); font-size:1.05rem; display:flex; gap:8px; align-items:center; margin-bottom:12px;}
+  .ncard p, .ncard li{font-size:.9rem; color:var(--ink-700); line-height:1.7;}
+  .ncard ul{margin:0; padding-left:18px;}
+  .ncard ul li{margin-bottom:6px;}
+
+  footer{
+    text-align:center; padding:40px 20px 50px; color:var(--cream-100);
+    background:linear-gradient(180deg, var(--maroon-800), var(--maroon-950));
+  }
+  footer .fmark{font-family:'Noto Serif Devanagari'; font-size:1.2rem; color:var(--gold-200,var(--gold-100)); margin-bottom:8px; font-weight:700;}
+  footer .fmeta{font-size:.82rem; color:var(--cream-200); line-height:1.7;}
+
+  .top-btn{
+    position:fixed; right:18px; bottom:18px; z-index:30;
+    width:46px; height:46px; border-radius:50%; border:none;
+    background:var(--gold-500); color:var(--maroon-950); font-size:1.1rem;
+    cursor:pointer; box-shadow:0 8px 20px rgba(58,10,16,.3);
+    display:flex; align-items:center; justify-content:center;
+    opacity:0; pointer-events:none; transition:opacity .3s ease, transform .3s ease;
+  }
+  .top-btn.show{opacity:1; pointer-events:auto;}
+  .top-btn:hover{transform:translateY(-3px);}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+
+  @media (max-width:600px){
+    .month-name{font-size:1.08rem;}
+    .timeline{padding:16px 16px 4px;}
+  }
+
+  /* ---- Desktop Image Sizing Adjustments ---- */
+  @media (min-width: 768px) {
+    .intro-img { max-width: 450px !important; }
+    .ncard img { max-width: 350px !important; display: block; margin: 0 auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="modal-overlay" id="infoModal">
+  <div class="modal-content">
+    <button class="close-modal" aria-label="Close">×</button>
+    <h3>माहिती</h3>
+    <p>अत्रास्ति कुशलं तत्रास्तु अथ मुमुक्षुभव्योत्तमाना । विशिष्ट धर्मसाधनाकरिता ह्या वर्षायोग पर्वकालाचा पूर्वाचार्यानी उपदेश केला आहे. या पर्वकाली व्रत उपोषणादि कर्तव्य कर्म यथाशक्ती करून आत्मसाधना तथा पुण्योपार्जन करणे अगत्याचे आहे. कारण की, "आचारः प्रथमो धर्मः चारित्तं खलु धम्मो" अर्थात आपला विचार, उच्चार व आचार शुभरुप ठेवणे हा श्रेष्ठ धर्म आणि स्वकीयशुद्ध चैतन्यरुपी आत्मस्वरुपात तल्लीन होणे हे स्वरुपाचारणरूप निश्चयचारित्र आहे. व्रताचे लक्षणही असेच आहे की, "अशुभान्निवृत्तिः शुभे प्रवृत्तिः व्रतमितीष्यते !" म्हणजे अशुभ मन वचन कायेची निवृत्ती करून, जिनपूजन, शास्त्र स्वाध्याय, जप-तप इत्यादी कार्यात प्रवृत्त होणे हेच वृत्त होय. म्हणजे सर्वांना चातुर्मासिक पर्व एक अत्यंत पुण्यप्रद योग लाभत असल्याने ही महत्वाची संधी प्रमादाने गमवू नये. या पवित्र उद्देशाने चातुर्मासात कोणत्या तिथीला कोणती व्रते करावीत याची माहिती सर्वांना मिळावी म्हणून श्री वीर संवत २५५२-५३ शके १९४८ इ. स. २०२६ या सालातील हा तक्ता सादर करण्यात येत आहे. तरी सर्वांनी याचा योग्य तो उपयोग करून घ्यावा.</p>
+  </div>
+</div>
+
+<div class="modal-overlay" id="downloadModal">
+  <div class="modal-content" style="text-align: center;">
+    <button class="close-modal" aria-label="Close">×</button>
+    <h3>नमस्कार!</h3>
+    <p style="text-align: center;">खालील बटणावर क्लिक करून डिजिटल पत्रिका डाउनलोड करा.</p>
+    <a href="https://raw.githubusercontent.com/Darshan-Upadhye/static-assets-cdn/main/%E0%A4%9A%E0%A4%BE%E0%A4%A4%E0%A5%81%E0%A4%B0%E0%A5%8D%E0%A4%AE%E0%A4%BE%E0%A4%B8%20%E0%A4%AA%E0%A4%A4%E0%A5%8D%E0%A4%B0%E0%A4%BF%E0%A4%95%E0%A4%BE/%E0%A4%AA%E0%A4%A4%E0%A5%8D%E0%A4%B0%E0%A4%BF%E0%A4%95%E0%A4%BE/%E0%A4%9A%E0%A4%BE%E0%A4%A4%E0%A5%81%E0%A4%B0%E0%A5%8D%E0%A4%AE%E0%A4%BE%E0%A4%B8%20%E0%A4%AA%E0%A4%A4%E0%A5%8D%E0%A4%B0%E0%A4%BF%E0%A4%95%E0%A4%BE%202026%20%E0%A4%AD%E0%A5%88%E0%A4%B0%E0%A4%B5%E0%A4%B5%E0%A4%BE%E0%A4%A1%E0%A5%80.pdf" download="Chaturmas_Patrika_2026.pdf" class="open-btn" style="display: inline-block; text-decoration: none; margin-top: 10px; font-size: 1rem; padding: 12px 36px;">Download पत्रिका</a>
+  </div>
+</div>
+
+<div id="welcome-screen">
+
+  <div class="welcome-bg">
+    <svg class="mandala-ring" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="200" cy="200" r="188" fill="none" stroke="#e8cd7a" stroke-width="1" stroke-dasharray="2 11"/>
+      <circle cx="200" cy="200" r="150" fill="none" stroke="#e8cd7a" stroke-width="1" stroke-dasharray="7 5"/>
+      <circle cx="200" cy="200" r="112" fill="none" stroke="#e8cd7a" stroke-width="1"/>
+      <g stroke="#e8cd7a" stroke-width="1">
+        <line x1="200" y1="35" x2="200" y2="60" transform="rotate(0 200 200)"/>
+        <line x1="200" y1="35" x2="200" y2="60" transform="rotate(30 200 200)"/>
+        <line x1="200" y1="35" x2="200" y2="60" transform="rotate(60 200 200)"/>
+        <line x1="200" y1="35" x2="200" y2="60" transform="rotate(90 200 200)"/>
+        <line x1="200" y1="35" x2="200" y2="60" transform="rotate(120 200 200)"/>
+        <line x1="200" y1="35" x2="200" y2="60" transform="rotate(150 200 200)"/>
+        <line x1="200" y1="35" x2="200" y2="60" transform="rotate(180 200 200)"/>
+        <line x1="200" y1="35" x2="200" y2="60" transform="rotate(210 200 200)"/>
+        <line x1="200" y1="35" x2="200" y2="60" transform="rotate(240 200 200)"/>
+        <line x1="200" y1="35" x2="200" y2="60" transform="rotate(270 200 200)"/>
+        <line x1="200" y1="35" x2="200" y2="60" transform="rotate(300 200 200)"/>
+        <line x1="200" y1="35" x2="200" y2="60" transform="rotate(330 200 200)"/>
+      </g>
+    </svg>
+    <svg class="mandala-ring r2" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="200" cy="200" r="170" fill="none" stroke="#e8cd7a" stroke-width="1" stroke-dasharray="4 9"/>
+      <circle cx="200" cy="200" r="95" fill="none" stroke="#e8cd7a" stroke-width="1"/>
+    </svg>
+    <span class="petal"></span><span class="petal"></span>
+    <span class="petal"></span><span class="petal"></span><span class="petal"></span>
+    <span class="petal"></span><span class="petal"></span><span class="petal"></span>
+    <span class="petal"></span><span class="petal"></span>
+  </div>
+
+  <svg class="corner-flourish tl" viewBox="0 0 78 78" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4 4C4 26 4 44 26 54C38 59 50 59 60 54" stroke="#e8cd7a" stroke-width="1.3"/>
+    <path d="M4 4C26 4 44 4 54 26C59 38 59 50 54 60" stroke="#e8cd7a" stroke-width="1.3"/>
+    <circle cx="4" cy="4" r="3" fill="#e8cd7a"/>
+  </svg>
+  <svg class="corner-flourish tr" viewBox="0 0 78 78" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4 4C4 26 4 44 26 54C38 59 50 59 60 54" stroke="#e8cd7a" stroke-width="1.3"/>
+    <path d="M4 4C26 4 44 4 54 26C59 38 59 50 54 60" stroke="#e8cd7a" stroke-width="1.3"/>
+    <circle cx="4" cy="4" r="3" fill="#e8cd7a"/>
+  </svg>
+  <svg class="corner-flourish bl" viewBox="0 0 78 78" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4 4C4 26 4 44 26 54C38 59 50 59 60 54" stroke="#e8cd7a" stroke-width="1.3"/>
+    <path d="M4 4C26 4 44 4 54 26C59 38 59 50 54 60" stroke="#e8cd7a" stroke-width="1.3"/>
+    <circle cx="4" cy="4" r="3" fill="#e8cd7a"/>
+  </svg>
+  <svg class="corner-flourish br" viewBox="0 0 78 78" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4 4C4 26 4 44 26 54C38 59 50 59 60 54" stroke="#e8cd7a" stroke-width="1.3"/>
+    <path d="M4 4C26 4 44 4 54 26C59 38 59 50 54 60" stroke="#e8cd7a" stroke-width="1.3"/>
+    <circle cx="4" cy="4" r="3" fill="#e8cd7a"/>
+  </svg>
+
+  <div class="door door-left"><span class="door-handle"></span><span class="door-glow"></span></div>
+  <div class="door door-right"><span class="door-handle"></span><span class="door-glow"></span></div>
+
+  <div class="hero-content">
+    <div class="emblem-wrap">
+      <div class="emblem-ring"></div>
+      <img class="emblem" src="https://raw.githubusercontent.com/Darshan-Upadhye/static-assets-cdn/refs/heads/main/%E0%A4%9A%E0%A4%BE%E0%A4%A4%E0%A5%81%E0%A4%B0%E0%A5%8D%E0%A4%AE%E0%A4%BE%E0%A4%B8%20%E0%A4%AA%E0%A4%A4%E0%A5%8D%E0%A4%B0%E0%A4%BF%E0%A4%95%E0%A4%BE/Images/%E0%A4%B6%E0%A5%8D%E0%A4%B0%E0%A5%80%20%E0%A4%B6%E0%A4%BE%E0%A4%82%E0%A4%A4%E0%A4%BF%E0%A4%A8%E0%A4%BE%E0%A4%A5%20%E0%A4%A4%E0%A5%80%E0%A4%B0%E0%A5%8D%E0%A4%A5%E0%A4%82%E0%A4%95%E0%A4%B0.png" alt="श्री शांतिनाथ तीर्थंकर" style="object-fit: contain; border-radius: 50%;">
+    </div>
+    <div class="eyebrow reveal-up">|| श्री वीतरागाय नमः ||</div>
+    <h1 class="hero-title reveal-up">चातुर्मासिक पुण्योपार्जक पर्वकाल सन २०२६</h1>
+    <p class="hero-sub reveal-up">डिजिटल पत्रिकेमध्ये स्वागत आहे</p>
+    <button class="open-btn reveal-up" id="openBtn">पत्रिका उघडा</button>
+  </div>
+</div>
+
+<div id="main-content">
+  <div class="toran-band"></div>
+  <header class="site-header">
+    <div class="header-top">
+      <div class="header-name">
+        <img src="https://raw.githubusercontent.com/Darshan-Upadhye/static-assets-cdn/refs/heads/main/%E0%A4%9A%E0%A4%BE%E0%A4%A4%E0%A5%81%E0%A4%B0%E0%A5%8D%E0%A4%AE%E0%A4%BE%E0%A4%B8%20%E0%A4%AA%E0%A4%A4%E0%A5%8D%E0%A4%B0%E0%A4%BF%E0%A4%95%E0%A4%BE/Images/%E0%A4%B6%E0%A5%8D%E0%A4%B0%E0%A5%80%20%E0%A4%B6%E0%A4%BE%E0%A4%82%E0%A4%A4%E0%A4%BF%E0%A4%A8%E0%A4%BE%E0%A4%A5%20%E0%A4%A4%E0%A5%80%E0%A4%B0%E0%A5%8D%E0%A4%A5%E0%A4%82%E0%A4%95%E0%A4%B0.png" alt="श्री शांतिनाथ तीर्थंकर" style="width: 34px; height: 34px; object-fit: contain; border-radius: 50%;">
+        <div>
+          <div class="t1">चातुर्मासिक पुण्योपार्जक पर्वकाल सन २०२६</div>
+          <div class="t2">विधानाचार्य पं. श्री. अक्षय भूपाल उपाध्ये</div>
+        </div>
+      </div>
+      
+      <div class="header-actions">
+        <button id="infoBtn" class="icon-btn" aria-label="Information">i</button>
+        <button id="downloadBtnHeader" class="icon-btn" aria-label="Download">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav class="month-nav" id="monthNav">
+      <button class="nav-pill" data-target="ashadh">आषाढ</button>
+      <button class="nav-pill" data-target="shravan">श्रावण</button>
+      <button class="nav-pill" data-target="bhadrapad">भाद्रपद</button>
+      <button class="nav-pill" data-target="ashwin">आश्विन</button>
+      <button class="nav-pill" data-target="kartik">कार्तिक</button>
+      <button class="nav-pill" data-target="vishesh">विशेष तिथी</button>
+      <button class="nav-pill" data-target="mantra">मंत्र</button>
+      <button class="nav-pill" data-target="suchana">सूचना</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro-banner reveal">
+      <div class="intro-mantra">|| श्री वीतरागाय नमः ||</div>
+      
+      <img src="https://raw.githubusercontent.com/Darshan-Upadhye/static-assets-cdn/refs/heads/main/%E0%A4%9A%E0%A4%BE%E0%A4%A4%E0%A5%81%E0%A4%B0%E0%A5%8D%E0%A4%AE%E0%A4%BE%E0%A4%B8%20%E0%A4%AA%E0%A4%A4%E0%A5%8D%E0%A4%B0%E0%A4%BF%E0%A4%95%E0%A4%BE/Images/Header%20Title.png" alt="Header Title" class="intro-img">
+      
+      <p class="intro-sub">विधानाचार्य पं. श्री. अक्षय भूपाल उपाध्ये यांच्या मार्गदर्शनाखाली बनविले</p>
+      <div class="intro-divider"></div>
+    </section>
+
+    <section class="month-section open" id="ashadh">
+      <button class="month-head" type="button">
+        <span class="chevron">▾</span>
+        <span class="month-head-left">
+          <span>
+            <span class="month-name">आषाढ</span><br>
+            <span class="month-count">६ पर्वदिन</span>
+          </span>
+          <span class="month-num">०१</span>
+        </span>
+      </button>
+      <div class="month-body-wrap"><div class="month-body-inner">
+      <ul class="timeline">
+        <li><span class="ev-date"><span class="day">मंगळवार</span> दि. २१/०७/२०२६</span><p class="ev-desc">श्री नंदीश्वर अष्टाह्निक पर्वारंभ, चातुर्मास आरंभ अष्टमी. कु. मुलींनी आत्मकुंकुम व्रत घेणे.</p></li>
+        <li><span class="ev-date"><span class="day">रविवार</span> दि. २६/०७/२०२६</span><p class="ev-desc">रविवार व्रतारंभ (सलग ९ रविवार).</p></li>
+        <li><span class="ev-date"><span class="day">सोमवार</span> दि. २८/०७/२०२६</span><p class="ev-desc">चतुर्दशी, चतु:संघ वर्षायोग स्थापना. कु. मुलींनी आत्मकुंकुम व्रत घेणे.</p></li>
+        <li><span class="ev-date"><span class="day">बुधवार</span> दि. २९/०७/२०२६</span><p class="ev-desc">गुरुपौर्णिमा.</p></li>
+        <li><span class="ev-date"><span class="day">गुरूवार</span> दि. ३०/०७/२०२६</span><p class="ev-desc">अष्टाह्निक पर्व विसर्जन.</p></li>
+        <li><span class="ev-date"><span class="day">बुधवार</span> दि. १२/०८/२०२६</span><p class="ev-desc">अमावस्या.</p></li>
+      </ul>
+      </div></div>
+    </section>
+
+    <section class="month-section" id="shravan">
+      <button class="month-head" type="button">
+        <span class="chevron">▾</span>
+        <span class="month-head-left">
+          <span>
+            <span class="month-name">श्रावण</span><br>
+            <span class="month-count">७ पर्वदिन</span>
+          </span>
+          <span class="month-num">०२</span>
+        </span>
+      </button>
+      <div class="month-body-wrap"><div class="month-body-inner">
+      <ul class="timeline">
+        <li><span class="ev-date"><span class="day">गुरूवार</span> दि. १३/०८/२०२६</span><p class="ev-desc">श्रावण मास प्रारंभ.</p></li>
+        <li><span class="ev-date"><span class="day">शुक्रवार</span> दि. १४/०८/२०२६</span><p class="ev-desc">संपत् शुक्रवार व्रतारंभ (५ शुक्रवार).</p></li>
+        <li><span class="ev-date"><span class="day">सोमवार</span> दि. १७/०८/२०२६</span><p class="ev-desc">नागपंचमी.</p></li>
+        <li><span class="ev-date"><span class="day">बुधवार</span> दि. १९/०८/२०२६</span><p class="ev-desc">मुकुट सप्तमी, भ. पार्श्वनाथ मोक्षकल्याणक महोत्सव.</p></li>
+        <li><span class="ev-date"><span class="day">शनिवार</span> दि. २२/०८/२०२६</span><p class="ev-desc">कलश दशमी व्रत.</p></li>
+        <li><span class="ev-date"><span class="day">गुरूवार</span> दि. २७/०८/२०२६</span><p class="ev-desc">यज्ञोपवीतधारण (श्रावणी पौर्णिमा), रक्षाबंधन, नारळी पौर्णिमा.</p></li>
+        <li><span class="ev-date"><span class="day">शुक्रवार</span> दि. ११/०९/२०२६</span><p class="ev-desc">अमावस्या.</p></li>
+      </ul>
+      </div></div>
+    </section>
+
+    <section class="month-section" id="bhadrapad">
+      <button class="month-head" type="button">
+        <span class="chevron">▾</span>
+        <span class="month-head-left">
+          <span>
+            <span class="month-name">भाद्रपद</span><br>
+            <span class="month-count">१३ पर्वदिन</span>
+          </span>
+          <span class="month-num">०३</span>
+        </span>
+      </button>
+      <div class="month-body-wrap"><div class="month-body-inner">
+      <ul class="timeline">
+        <li><span class="ev-date"><span class="day">शनिवार</span> दि. १२/०९/२०२६</span><p class="ev-desc">षोडशकारण व्रतारंभ (सलग १६ दिवस व्रत करणे).</p></li>
+        <li><span class="ev-date"><span class="day">रविवार</span> दि. १३/०९/२०२६</span><p class="ev-desc">प.पू. आ. श्री १०८ शांतिसागर मुनि महाराजजी पुण्यतिथी.</p></li>
+        <li><span class="ev-date"><span class="day">बुधवार</span> दि. १६/०९/२०२६</span><p class="ev-desc">दशलक्षण व्रतारंभ, ऋषिपंचमी व पंचमेरु व्रतारंभ.</p></li>
+        <li><span class="ev-date"><span class="day">शुक्रवार</span> दि. १८/०९/२०२६</span><p class="ev-desc">निर्दोष सप्तमी व्रत.</p></li>
+        <li><span class="ev-date"><span class="day">सोमवार</span> दि. २१/०९/२०२६</span><p class="ev-desc">सुगंध दशमी व्रत (धूप दशमी), मंदिरात धूप घालणे.</p></li>
+        <li><span class="ev-date"><span class="day">बुधवार</span> दि. २३/०९/२०२६</span><p class="ev-desc">द्वादश नोपी व्रत.</p></li>
+        <li><span class="ev-date"><span class="day">गुरुवार</span> दि. २४/०९/२०२६</span><p class="ev-desc">अनंत त्रयोदशी, अनंत नोपी, रत्नत्रय व्रतारंभ.</p></li>
+        <li><span class="ev-date"><span class="day">शुक्रवार</span> दि. २५/०९/२०२६</span><p class="ev-desc">अनंत चतुर्दशी व सूतक परिहार (घारगी नोपी), श्री भ. १००८ वासुपूज्य मोक्षकल्याणक.</p></li>
+        <li><span class="ev-date"><span class="day">शनिवार</span> दि. २६/०९/२०२६</span><p class="ev-desc">अनंतपौर्णिमा, अनंत नोपी विसर्जन, वायन समर्पण, दशलक्षण व्रत विसर्जन.</p></li>
+        <li><span class="ev-date"><span class="day">रविवार</span> दि. २७/०९/२०२६</span><p class="ev-desc">षोडशकारण व्रत आणि रत्नत्रय व्रत.</p></li>
+        <li><span class="ev-date"><span class="day">सोमवार</span> दि. २८/०९/२०२६</span><p class="ev-desc">षोडशकारण व्रत विसर्जन.</p></li>
+        <li><span class="ev-date"><span class="day">शुक्रवार</span> दि. ०२/१०/२०२६</span><p class="ev-desc">चंद्रषष्ठी व्रत नोपी.</p></li>
+        <li><span class="ev-date"><span class="day">शनिवार</span> दि. १०/१०/२०२६</span><p class="ev-desc">अमावस्या.</p></li>
+      </ul>
+      </div></div>
+    </section>
+
+    <section class="month-section" id="ashwin">
+      <button class="month-head" type="button">
+        <span class="chevron">▾</span>
+        <span class="month-head-left">
+          <span>
+            <span class="month-name">आश्विन</span><br>
+            <span class="month-count">११ पर्वदिन</span>
+          </span>
+          <span class="month-num">०४</span>
+        </span>
+      </button>
+      <div class="month-body-wrap"><div class="month-body-inner">
+      <ul class="timeline">
+        <li><span class="ev-date"><span class="day">रविवार</span> दि. ११/१०/२०२६</span><p class="ev-desc">देवी पद्मावती नवरात्रारंभ, घटस्थापना — स. ६:५० ते स. ११:५० पर्यंत आणि दु. ३:१० ते सायं. ४:५० पर्यंत.</p></li>
+        <li><span class="ev-date"><span class="day">सोमवार</span> दि. १९/१०/२०२६</span><p class="ev-desc">जीवदया अष्टमी (जागरण).</p></li>
+        <li><span class="ev-date"><span class="day">मंगळवार</span> दि. २०/१०/२०२६</span><p class="ev-desc">आयुध नवमी, खंडेनवमी, विजयादशमी दसरा.</p></li>
+        <li><span class="ev-date"><span class="day">बुधवार</span> दि. २१/१०/२०२६</span><p class="ev-desc">दशमी तिथी दु. २:०० वाजेपर्यंत.</p></li>
+        <li><span class="ev-date"><span class="day">रविवार</span> दि. २५/१०/२०२६</span><p class="ev-desc">कोजागरी पौर्णिमा.</p></li>
+        <li><span class="ev-date"><span class="day">सोमवार</span> दि. २६/१०/२०२६</span><p class="ev-desc">पौर्णिमा स. ९:४२ पर्यंत. भूमी पूजन (बुक्कवा) स. ९:४५ नंतर.</p></li>
+        <li><span class="ev-date"><span class="day">मंगळवार</span> दि. २७/१०/२०२६</span><p class="ev-desc">भूमी पूजन (बुक्कवा) स. ७ वाजेपर्यंत.</p></li>
+	<li><span class="ev-date"><span class="day">शुक्रवार</span> दि. ०६/११/२०२६</span><p class="ev-desc">धनत्रयोदशी, ब्रह्मपूजा — सायं. ६:२५ ते रात्री ८:२५ पर्यंत.</p></li>
+        <li><span class="ev-date"><span class="day">शनिवार</span> दि. ०७/११/२०२६</span><p class="ev-desc">धनत्रयोदशी, ब्रह्मपूजा — स. १०:५० वाजेपर्यंत.</p></li>
+        <li><span class="ev-date"><span class="day">रविवार</span> दि. ०८/११/२०२६</span><p class="ev-desc">नरक चतुर्दशी, अभ्यंगस्नान, दिपावली. दिपोत्सव कुबेर-लक्ष्मी पूजा वेळ: सायं. ६:२० ते रात्री ८:२० पर्यंत. सिंह लग्न उत्तररात्री १२:४५ ते २:५० पर्यंत (त्यागी चातुर्मास समाप्ती).</p></li>
+        <li><span class="ev-date"><span class="day">सोमवार</span> दि. ०९/११/२०२६</span><p class="ev-desc">अमावस्या. भ. महावीर निर्वाण पूजा, निर्वाण लाडू चढवणे वेळ प. ५:३० वा. लक्ष्मी पूजन स. ७:०५ ते ९:२० वाजेपर्यंत. श्री वीर निर्वाण संवत् २५५३ प्रारंभ.</p></li>
+      </ul>
+      </div></div>
+    </section>
+
+    <section class="month-section" id="kartik">
+      <button class="month-head" type="button">
+        <span class="chevron">▾</span>
+        <span class="month-head-left">
+          <span>
+            <span class="month-name">कार्तिक</span><br>
+            <span class="month-count">६ पर्वदिन</span>
+          </span>
+          <span class="month-num">०५</span>
+        </span>
+      </button>
+      <div class="month-body-wrap"><div class="month-body-inner">
+      <ul class="timeline">
+        <li><span class="ev-date"><span class="day">मंगळवार</span> दि. १०/११/२०२६</span><p class="ev-desc">दिपावली पाडवा, सरस्वती वही पूजन — स. ७:०५ ते स. ९:१५ पर्यंत.</p></li>
+        <li><span class="ev-date"><span class="day">बुधवार</span> दि. ११/११/२०२६</span><p class="ev-desc">भाऊबीज.</p></li>
+        <li><span class="ev-date"><span class="day">मंगळवार</span> दि. १७/११/२०२६</span><p class="ev-desc">कार्तिक अष्टाह्निक पर्वारंभ.</p></li>
+        <li><span class="ev-date"><span class="day">सोमवार</span> दि. २३/११/२०२६</span><p class="ev-desc">चतुर्दशी, कु. मुलींचे आत्मकुंकुम व्रत विसर्जन.</p></li>
+        <li><span class="ev-date"><span class="day">मंगळवार</span> दि. २४/११/२०२६</span><p class="ev-desc">पौर्णिमा.</p></li>
+        <li><span class="ev-date"><span class="day">बुधवार</span> दि. २५/११/२०२६</span><p class="ev-desc">अष्टाह्निक पर्व विसर्जन, चातुर्मास समाप्ती.</p></li>
+      </ul>
+      </div></div>
+    </section>
+
+    <div class="block-title reveal" id="vishesh">
+      <h2>विशेष तिथी सूची</h2>
+      <p class="sub">संपूर्ण चातुर्मासातील अष्टमी, चतुर्दशी व साप्ताहिक त्यागवस्तू</p>
+    </div>
+    <div class="card-grid">
+      <div class="tcard reveal">
+        <h3>🪔 अष्टमी</h3>
+        <p class="tcard-sub">प्रत्येक पंधरवड्यातील अष्टमी तिथी</p>
+        <div class="chip-wrap">
+          <span class="chip">मंगळवार, २१ जुलै</span>
+          <span class="chip">गुरूवार, ०६ ऑगस्ट</span>
+          <span class="chip">गुरुवार, २० ऑगस्ट</span>
+          <span class="chip">शुक्रवार, ०४ सप्टेंबर</span>
+          <span class="chip">शनिवार, १९ सप्टेंबर</span>
+          <span class="chip">शनिवार, ०३ ऑक्टोबर</span>
+          <span class="chip">सोमवार, १९ ऑक्टोबर</span>
+          <span class="chip">सोमवार, ०२ नोव्हेंबर</span>
+          <span class="chip">मंगळवार, १७ नोव्हेंबर</span>
+        </div>
+      </div>
+      <div class="tcard reveal">
+        <h3>🪔 चतुर्दशी</h3>
+        <p class="tcard-sub">प्रत्येक पंधरवड्यातील चतुर्दशी तिथी</p>
+        <div class="chip-wrap">
+          <span class="chip">मंगळवार, २८ जुलै</span>
+          <span class="chip">मंगळवार, ११ ऑगस्ट</span>
+          <span class="chip">गुरुवार, २७ ऑगस्ट</span>
+          <span class="chip">गुरूवार, १० सप्टेंबर</span>
+          <span class="chip">शुक्रवार, २५ सप्टेंबर</span>
+          <span class="chip">शुक्रवार, ०९ ऑक्टोबर</span>
+          <span class="chip">रविवार, २५ ऑक्टोबर</span>
+          <span class="chip">रविवार, ०८ नोव्हेंबर</span>
+          <span class="chip">सोमवार, २३ नोव्हेंबर</span>
+        </div>
+      </div>
+      <div class="tcard reveal">
+        <h3>🌿 साप्ताहिक त्यागवस्तू</h3>
+        <p class="tcard-sub">वारानुसार त्याग करावयाच्या वस्तू</p>
+        <ul class="tyag-list">
+          <li><span class="tyag-day">रविवार</span><span class="tyag-item">मीठ, लोण</span></li>
+          <li><span class="tyag-day">सोमवार</span><span class="tyag-item">हिरवा भाजीपाला</span></li>
+          <li><span class="tyag-day">मंगळवार</span><span class="tyag-item">साखर, गूळ</span></li>
+          <li><span class="tyag-day">बुधवार</span><span class="tyag-item">तूप</span></li>
+          <li><span class="tyag-day">गुरुवार</span><span class="tyag-item">दूध</span></li>
+          <li><span class="tyag-day">शुक्रवार</span><span class="tyag-item">दही, ताक</span></li>
+          <li><span class="tyag-day">शनिवार</span><span class="tyag-item">तेल</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="block-title reveal" id="mantra">
+      <h2>मंत्र</h2>
+      <p class="sub">नित्य जाप्यासाठी</p>
+    </div>
+    <div class="mantra-grid">
+      <div class="mcard reveal">
+        <h3>आत्मकुंकुम नोपी मंत्र</h3>
+        <ul class="mantra-list">
+          <li><span class="num">१.</span>आत्मज्योति:</li>
+          <li><span class="num">२.</span>आचारज्योति:</li>
+          <li><span class="num">३.</span>पुरूषज्योति:</li>
+          <li><span class="num">४.</span>पुत्रज्योति:</li>
+          <li><span class="num">५.</span>पुण्यज्योति:</li>
+          <li><span class="num">६.</span>सहोदरज्योति:</li>
+          <li><span class="num">७.</span>छत्रज्योतीजेयतीश्वनित्यं ममं अस्माकं भवतु स्वाहा</li>
+        </ul>
+      </div>
+      <div class="mcard reveal">
+        <h3>नंदीश्वर जाप्य मंत्र</h3>
+        <ul class="mantra-list">
+          <li><span class="num">१.</span>ॐ ह्रीं नंदीश्वर संज्ञाय नमः</li>
+          <li><span class="num">२.</span>ॐ ह्रीं अष्टमहाविभूति संज्ञाय नमः</li>
+          <li><span class="num">३.</span>ॐ ह्रीं त्रिलोकसार संज्ञाय नमः</li>
+          <li><span class="num">४.</span>ॐ ह्रीं चतुर्मुख संज्ञाय नमः</li>
+          <li><span class="num">५.</span>ॐ ह्रीं पंचमहालक्षण संज्ञाय नमः</li>
+          <li><span class="num">६.</span>ॐ ह्रीं स्वर्गसोपान संज्ञाय नमः</li>
+          <li><span class="num">७.</span>ॐ ह्रीं सर्वसंपत्ति संज्ञाय नमः</li>
+          <li><span class="num">८.</span>ॐ ह्रीं इंद्रध्वज संज्ञाय नमः</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="block-title reveal" id="suchana">
+      <h2>महत्त्वाच्या सूचना</h2>
+      <p class="sub">ग्रहणे व वही खरेदी मुहूर्त</p>
+    </div>
+    <div class="notice-grid">
+      <div class="ncard reveal">
+        <h3>🌑 ग्रहणे</h3>
+        <p>(१) खग्रास सुर्यग्रहण बुधवार दि. १२/०८/२०२६ रोजी 
+(२) खंडग्रास चंद्रग्रहण शुक्रवार दि. २८/०८/२०२६ रोजी 
+(३) कंकनाकृती सुर्यग्रहण शनिवार दि. ०६।०२।२०२७ रोजी 
+(४) माद्य (छाया कल्प) चंद्रग्रहण शनिवार दि. २०/०२/२०२७ रोजी आहेत. 
+परंतु ही ग्रहणे भारतात दिसणार नाहीत म्हणून ग्रहण वेध पाळू नये..</p>
+      </div>
+      <div class="ncard reveal">
+        <h3>📖 वही खरेदी मुहूर्त</h3>
+        <ul>
+          <li><b>शनिवार दि. ३१ ऑक्टोबर</b> — संपूर्ण दिवस उत्तम</li>
+          <li><b>रविवार दि. ०१ नोव्हेंबर</b> — संपूर्ण दिवस उत्तम</li>
+          <li><b>सोमवार दि. ०२ नोव्हेंबर</b> — दु. १२ ते दु. २ पर्यंत, सायं. ६:४५ ते ८:४५ पर्यंत</li>
+          <li><b>मंगळवार दि. ०३ नोव्हेंबर</b> — दु. १:४० ते दु. ३:२० पर्यंत, सायं. ६:४० ते ८:४० पर्यंत</li>
+          <li><b>बुधवार दि. ०४ नोव्हेंबर</b> — दु. १:४० ते दु. ३:१५ पर्यंत, सायं. ६:३० ते रात्री ८:३० पर्यंत</li>
+          <li><b>शुक्रवार दि. ०६ नोव्हेंबर</b> — स. ७:२० ते ९:३० पर्यंत</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="ncard reveal" style="margin-top: 18px; text-align: center;">
+       <img src="https://raw.githubusercontent.com/Darshan-Upadhye/static-assets-cdn/refs/heads/main/%E0%A4%9A%E0%A4%BE%E0%A4%A4%E0%A5%81%E0%A4%B0%E0%A5%8D%E0%A4%AE%E0%A4%BE%E0%A4%B8%20%E0%A4%AA%E0%A4%A4%E0%A5%8D%E0%A4%B0%E0%A4%BF%E0%A4%95%E0%A4%BE/Images/%E0%A4%B8%E0%A4%BF%E0%A4%A6%E0%A5%8D%E0%A4%A7%E0%A4%BE%E0%A4%82%E0%A4%A4_%E0%A4%9C%E0%A5%8D%E0%A4%AF%E0%A5%8B%E0%A4%A4%E0%A4%BF%E0%A4%B7%E0%A4%BE%E0%A4%B2%E0%A4%AF.png" alt="Notice Extension" style="max-width: 100%; height: auto; border-radius: 8px;">
+    </div>
+
+    <div class="block-title reveal" style="margin-top: 40px;">
+      <h2>पत्रिका सौजन्य</h2>
+    </div>
+    <div class="card-grid">
+      <div class="ncard reveal" style="text-align:center; padding: 16px;">
+        <img src="https://raw.githubusercontent.com/Darshan-Upadhye/static-assets-cdn/refs/heads/main/%E0%A4%9A%E0%A4%BE%E0%A4%A4%E0%A5%81%E0%A4%B0%E0%A5%8D%E0%A4%AE%E0%A4%BE%E0%A4%B8%20%E0%A4%AA%E0%A4%A4%E0%A5%8D%E0%A4%B0%E0%A4%BF%E0%A4%95%E0%A4%BE/Images/Sponsor%2001.png" alt="Sponsor 1" style="max-width:100%; height:auto; border-radius:8px;">
+      </div>
+      <div class="ncard reveal" style="text-align:center; padding: 16px;">
+        <img src="https://raw.githubusercontent.com/Darshan-Upadhye/static-assets-cdn/refs/heads/main/%E0%A4%9A%E0%A4%BE%E0%A4%A4%E0%A5%81%E0%A4%B0%E0%A5%8D%E0%A4%AE%E0%A4%BE%E0%A4%B8%20%E0%A4%AA%E0%A4%A4%E0%A5%8D%E0%A4%B0%E0%A4%BF%E0%A4%95%E0%A4%BE/Images/Sponsor%2002.png" alt="Sponsor 2" style="max-width:100%; height:auto; border-radius:8px;">
+      </div>
+      <div class="ncard reveal" style="text-align:center; padding: 16px;">
+        <img src="https://raw.githubusercontent.com/Darshan-Upadhye/static-assets-cdn/refs/heads/main/%E0%A4%9A%E0%A4%BE%E0%A4%A4%E0%A5%81%E0%A4%B0%E0%A5%8D%E0%A4%AE%E0%A4%BE%E0%A4%B8%20%E0%A4%AA%E0%A4%A4%E0%A5%8D%E0%A4%B0%E0%A4%BF%E0%A4%95%E0%A4%BE/Images/Sponsor%2003.png" alt="Sponsor 3" style="max-width:100%; height:auto; border-radius:8px;">
+      </div>
+    </div>
+
+    <div style="text-align: center; margin: 50px 0 20px;">
+      <a href="https://raw.githubusercontent.com/Darshan-Upadhye/static-assets-cdn/main/%E0%A4%9A%E0%A4%BE%E0%A4%A4%E0%A5%81%E0%A4%B0%E0%A5%8D%E0%A4%AE%E0%A4%BE%E0%A4%B8%20%E0%A4%AA%E0%A4%A4%E0%A5%8D%E0%A4%B0%E0%A4%BF%E0%A4%95%E0%A4%BE/%E0%A4%AA%E0%A4%A4%E0%A5%8D%E0%A4%B0%E0%A4%BF%E0%A4%95%E0%A4%BE/%E0%A4%9A%E0%A4%BE%E0%A4%A4%E0%A5%81%E0%A4%B0%E0%A5%8D%E0%A4%AE%E0%A4%BE%E0%A4%B8%20%E0%A4%AA%E0%A4%A4%E0%A5%8D%E0%A4%B0%E0%A4%BF%E0%A4%95%E0%A4%BE%202026%20%E0%A4%AD%E0%A5%88%E0%A4%B0%E0%A4%B5%E0%A4%B5%E0%A4%BE%E0%A4%A1%E0%A5%80.pdf" download="Chaturmas_Patrika_2026.pdf" class="open-btn reveal" style="display: inline-block; text-decoration: none; margin: 0; padding: 14px 40px;">Download पत्रिका</a>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="fmark">|| जय जिनेंद्र ||</div>
+    <div class="fmeta">
+      श्री १००८ भ. शांतिनाथ दिगंबर जैन मंदिर, भैरववाडी, कुरुंदवाड<br>
+      विधानाचार्य पं. श्री. अक्षय भूपाल उपाध्ये · +९१ ८२०८९०८८८९ / +९१ ९०९६६९६३९३
+    </div>
+    <div style="font-size: 0.75rem; margin-top: 15px; color: var(--cream-200);">
+      Design, Managed and Created By <a href="https://darshan-upadhye-portfolio.vercel.app/" target="_blank" style="color: var(--gold-300); text-decoration: none;">Darshan Akshay Upadhye</a>
+    </div>
+  </footer>
+</div>
+
+<button class="top-btn" id="topBtn" aria-label="वर जा">↑</button>
+
+<script>
+  // ---------- door opening animation ----------
+  const openBtn = document.getElementById('openBtn');
+  const welcome = document.getElementById('welcome-screen');
+  const mainContent = document.getElementById('main-content');
+
+  openBtn.addEventListener('click', () => {
+    document.body.classList.add('opened');
+    mainContent.classList.add('show');
+    setTimeout(() => { welcome.style.display = 'none'; }, 1050);
+  });
+
+  // ---------- accordion ----------
+  document.querySelectorAll('.month-head').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.closest('.month-section').classList.toggle('open');
+    });
+  });
+
+  // ---------- month nav: scroll + open accordion ----------
+  const pills = document.querySelectorAll('.nav-pill');
+  pills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      const id = pill.dataset.target;
+      const target = document.getElementById(id);
+      if (!target) return;
+      if (target.classList.contains('month-section')) {
+        document.querySelectorAll('.month-section').forEach(s => s.classList.remove('open'));
+        target.classList.add('open');
+      }
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      pills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+    });
+  });
+
+  // ---------- scroll reveal ----------
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+
+  // ---------- top button ----------
+  const topBtn = document.getElementById('topBtn');
+  window.addEventListener('scroll', () => {
+    topBtn.classList.toggle('show', window.scrollY > 500);
+  });
+  topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // ---------- active pill on scroll ----------
+  const sectionIds = ['ashadh','shravan','bhadrapad','ashwin','kartik','vishesh','mantra','suchana'];
+  const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+  const navIO = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        pills.forEach(p => p.classList.toggle('active', p.dataset.target === id));
+      }
+    });
+  }, { threshold: 0, rootMargin: '-140px 0px -70% 0px' });
+  sections.forEach(sec => navIO.observe(sec));
+
+  // ---------- Modal Logic ----------
+  const infoBtn = document.getElementById('infoBtn');
+  const downloadBtnHeader = document.getElementById('downloadBtnHeader');
+  const infoModal = document.getElementById('infoModal');
+  const downloadModal = document.getElementById('downloadModal');
+  const closeBtns = document.querySelectorAll('.close-modal');
+
+  infoBtn.addEventListener('click', () => infoModal.classList.add('active'));
+  downloadBtnHeader.addEventListener('click', () => downloadModal.classList.add('active'));
+
+  closeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.closest('.modal-overlay').classList.remove('active');
+    });
+  });
+
+  document.querySelectorAll('.modal-overlay').forEach(overlay => {
+    overlay.addEventListener('click', (e) => {
+      if(e.target === overlay) overlay.classList.remove('active');
+    });
+  });
+</script>
+</body>
+</html>
